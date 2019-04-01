@@ -12,11 +12,11 @@ app.use(
   })
 );
 
-app.set('port', (process.env.PORT || 80));
+// app.set('port', (process.env.PORT || 80));
 
-app.listen(app.get('port'), function(){
-	console.log('Server started on port ' + app.get('port'))
-});
+// app.listen(app.get('port'), function(){
+// 	console.log('Server started on port ' + app.get('port'))
+// });
 
 const token = '887519868:AAGyrXr3TPUpJdq3-ciLMR8bJK384NzQ-oE';
 const bot = new telegram(token, {polling: true});
