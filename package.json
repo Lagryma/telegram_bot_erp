@@ -1,0 +1,23 @@
+{
+    "name": "erp-bot",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js",
+        "build": "node index.js",
+        "dev": "nodemon index.js"
+    },
+    "author": "Emmanuel Ryan R. Gamlanga",
+    "license": "MIT",
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "express": "^4.16.4",
+        "node-cron": "^2.0.3",
+        "node-telegram-bot-api": "^0.30.0"
+    },
+    "engines": {
+        "node": "8.11.1"
+    }
+}
