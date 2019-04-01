@@ -42,7 +42,7 @@ bot.on('message', (msg) => {
                     players: {},
                     join_id: 0,
                     join_btn: 0,
-                    join_timer: 5,
+                    join_timer: 20,
                     phase_1: PHASE_1_TIME,
                     phase_2: 5,      // set to five at first
                     res_msg: ''
