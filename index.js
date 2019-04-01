@@ -12,11 +12,10 @@ app.use(
   })
 );
 
-var server = app.listen(process.env.PORT, function () {
-    var host = server.address().address;
-    var port = server.address().port;
+app.set('port', (process.env.PORT || 80));
 
-    console.log('Web server started at http://%s:%s', host, port);
+app.listen(app.get('port'), function(){
+	console.log('Server started on port ' + app.get('port'))
 });
 
 const token = '887519868:AAGyrXr3TPUpJdq3-ciLMR8bJK384NzQ-oE';
