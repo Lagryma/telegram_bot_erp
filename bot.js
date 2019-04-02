@@ -18,7 +18,7 @@ const token = process.env.TOKEN;
 var bot;
 
 if (mode == 'production') {
-    bot = new telegram(token);
+    bot = new telegram(token, {polling: true});
     // bot.setWebHook('https://lychee-crisp-83672.herokuapp.com/' + token);
 }
 else {
