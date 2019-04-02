@@ -19,7 +19,7 @@ var bot;
 
 if (mode == 'production') {
     bot = new telegram(token);
-    bot.setWebHook(process.env.HEROKU_URL + token);
+    // bot.setWebHook('https://lychee-crisp-83672.herokuapp.com/' + token);
 }
 else {
     bot = new telegram(token, {polling: true});
@@ -458,4 +458,4 @@ module.exports = bot;
 
 // [inline URL](tg://user?id=123456789)
 // var telegram_url = "https://api.telegram.com/bot887519868:AAGyrXr3TPUpJdq3-ciLMR8bJK384NzQ-oE/sendMessage";
-// curl -F "url=https://telegrambot-ixxmem5u3.now.sh" https://api.telegram.org/bot887519868:AAGyrXr3TPUpJdq3-ciLMR8bJK384NzQ-oE/setWebhook
+// curl -F "url=https://lychee-crisp-83672.herokuapp.com/" https://api.telegram.org/bot887519868:AAGyrXr3TPUpJdq3-ciLMR8bJK384NzQ-oE/setWebhook
