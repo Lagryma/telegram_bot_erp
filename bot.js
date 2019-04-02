@@ -19,7 +19,7 @@ var bot;
 
 if (mode == 'production') {
     bot = new telegram(token);
-    bot.setWebhook(process.env.HEROKU_URL + token);
+    bot.setWebHook(process.env.HEROKU_URL + token);
 }
 else {
     bot = new telegram(token, {polling: true});
