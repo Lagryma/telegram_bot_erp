@@ -90,7 +90,7 @@ bot.on('message', (msg) => {
                                     }).then((m) => {
                                         var n_players = Object.keys(games[`g-${msg.chat.id}`].players);
                                         
-                                        if (n_players.length < 1) {
+                                        if (n_players.length < 2) {
                                             games[`g-${msg.chat.id}`].t_join.destroy();
                                             delete games[`g-${msg.chat.id}`];
                                             bot.sendMessage(msg.chat.id, '*Not enough players to start the game!*', {parse_mode: 'Markdown'});
@@ -458,4 +458,4 @@ module.exports = bot;
 
 // [inline URL](tg://user?id=123456789)
 // var telegram_url = "https://api.telegram.com/bot887519868:AAGyrXr3TPUpJdq3-ciLMR8bJK384NzQ-oE/sendMessage";
-// curl -F "url=https://lychee-crisp-83672.herokuapp.com/" https://api.telegram.org/bot887519868:AAGyrXr3TPUpJdq3-ciLMR8bJK384NzQ-oE/setWebhook
+// curl -F "url=https://sleepy-everglades-75208.herokuapp.com/" https://api.telegram.org/bot887519868:AAGyrXr3TPUpJdq3-ciLMR8bJK384NzQ-oE/setWebhook
