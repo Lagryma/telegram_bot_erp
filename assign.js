@@ -1,6 +1,9 @@
+// Maximum amount of players.
 const MAX_PLAYERS = 16;
 
 module.exports.assign = function(players) {
+
+    // Data for different agents that the player can be assigned.
     var agents = {
         /**     FORMAT  
         [agent name]: {
@@ -176,6 +179,7 @@ module.exports.assign = function(players) {
         }
     };
     
+    // Sets the number of VIPs and ERPs depending on the player count.
     var count = {
         '4': {
             vip: 1,
@@ -222,12 +226,14 @@ module.exports.assign = function(players) {
     //     }
     // };
     
+    // Initialize necessary variables.
     var keycount = Object.keys(count);
     var key = Object.keys(players);
     var max = key.length - 1;
     var min = 0;
     var cnt = {};
 
+    // Get the number of VIPs and ERPs based on player counts. (See line 182)
     for (let i = 0;i < keycount.length;i++) {
         if (count[keycount[i]]) {
             let x = parseInt(keycount[i]);
@@ -238,8 +244,7 @@ module.exports.assign = function(players) {
         }
     }
    
-    // Assign erps
-
+    // Randomly assign ERPs till ERP quota.
     while (cnt.erp > 0) {
         let rand_erp = Math.floor(Math.random() * (max - min +1)) + min;
         if (players[key[rand_erp]].erp == false) {
@@ -248,23 +253,28 @@ module.exports.assign = function(players) {
         }
     }
 
-    // Assign vips
-
+    // Initialize seen array.
     var seen = [];
     
+    // Randomly assign VIPS till VIP quota.
     while (cnt.vip > 0) {
         let rand_vip = Math.floor(Math.random() * (max - min +1)) + min;
+
+        // Only assign player as VIP if non-ERP and not a VIP yet.
         if (players[key[rand_vip]].erp == false && players[key[rand_vip]].vip == false) {
             players[key[rand_vip]].vip = true;
             cnt.vip--;
 
-            // Assign 'see'
-
+            // Assign 'see' (See line 256)
             let see = false;
             while (!see && key.length >= 4) {
                 let rand_see = Math.floor(Math.random() * (max - min +1)) + min;
                 let done = false;
+
+                // Only assign 'see' if non-ERP and not same id.
                 if (players[key[rand_see]].erp == false && rand_see != rand_vip) {
+
+                    // If id already exist on seen (See line 256), retry assignment.
                     for (let j = 0;j < seen.length;j++) {
                         if (seen[j] == rand_see) {
                             done = true;
@@ -272,6 +282,7 @@ module.exports.assign = function(players) {
                         }
                     }
 
+                    // If id not yet on seen (See line 256), assign.
                     if (!done) {
                         players[key[rand_see]].see = `${players[key[rand_vip]].fn}`;
                         see = true;
@@ -282,14 +293,16 @@ module.exports.assign = function(players) {
         }
     }
 
-    // Assign agents
-
+    // Assign agents randomly
     var arr = [];
     var keyagent = Object.keys(agents);
 
+    // Assign agents to players. (See line 6)
     for (let i = 0;i <= max;) {
         let done = false;
         let rand_agt = Math.floor(Math.random() * (keyagent.length - min)) + min;
+
+        // Ensure agent uniqueness.
         for (let j = 0;j < arr.length;j++) {
             if (rand_agt == arr[j]) {
                 done = true;
